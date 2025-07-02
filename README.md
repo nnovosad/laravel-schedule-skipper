@@ -9,4 +9,4 @@ This package automatically prevents any scheduled tasks from being executed when
 ## 🚀 Installation
 
 ```bash
-composer require nnovosad19/laravel-schedule-blocker --dev
+composer require nnovosad19/laravel-schedule-skippper --dev
