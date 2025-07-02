@@ -1,0 +1,30 @@
+{
+  "name": "nnovosad19/schedule-skipper",
+  "description": "Automatically disables Laravel scheduled tasks when the application is running in the local environment.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nikolay Novosad",
+      "email": "nnovosad19@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "laravel/framework": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "NNovosad19\\ScheduleSkipper\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "NNovosad19\\ScheduleSkipper\\Providers\\ScheduleSkipperServiceProvider"
+      ],
+      "aliases": {
+      }
+    }
+  }
+}
