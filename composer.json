@@ -1,5 +1,5 @@
 {
-  "name": "nnovosad19/schedule-skipper",
+  "name": "nnovosad19/laravel-schedule-skipper",
   "description": "Automatically disables Laravel scheduled tasks when the application is running in the local environment.",
   "type": "library",
   "license": "MIT",
