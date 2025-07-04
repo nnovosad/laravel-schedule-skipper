@@ -11,5 +11,5 @@ return [
     | Environment to schedule skipper.
     |
     */
-    'env' => env('SCHEDULE_SKIPPER_ENV', ['local']),
+    'env' => env('SCHEDULE_SKIPPER_ENV', 'local'),
 ];

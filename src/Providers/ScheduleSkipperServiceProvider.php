@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace NNovosad19\ScheduleSkipper\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use NNovosad19\ScheduleSkipper\Contracts\ScheduleSkipperInterface;
+use NNovosad19\ScheduleSkipper\Services\ScheduleSkipperService;
 use Illuminate\Console\Scheduling\Schedule;
-use ReflectionClass;
 
 class ScheduleSkipperServiceProvider extends ServiceProvider
 {
@@ -17,18 +18,7 @@ class ScheduleSkipperServiceProvider extends ServiceProvider
         ], 'schedule-skipper');
 
         $this->app->afterResolving(Schedule::class, function (Schedule $schedule) {
-            if (app()->environment(config('schedule-skipper.env'))) {
-                $ref = new ReflectionClass($schedule);
-
-                if ($ref->hasProperty('events')) {
-                    $events = $ref->getProperty('events');
-
-                    if ($events->isProtected()) {
-                        $events->setAccessible(true);
-                        $events->setValue($schedule, []);
-                    }
-                }
-            }
+            $this->app->make(ScheduleSkipperInterface::class)->clearSchedule($schedule);
         });
     }
 
@@ -38,5 +28,7 @@ class ScheduleSkipperServiceProvider extends ServiceProvider
             dirname(__DIR__, 2) . '/config/schedule-skipper.php',
             'schedule-skipper',
         );
+
+        $this->app->bind(ScheduleSkipperInterface::class, ScheduleSkipperService::class);
     }
 }

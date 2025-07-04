@@ -15,9 +15,11 @@ This package automatically prevents any scheduled tasks from being executed when
 ## Publishing Configuration File:
 Publish the schedule skipper configuration file:
 
-```php artisan vendor:publish --tag=schedule-skipper```
+```bash
+   php artisan vendor:publish --tag=schedule-skipper
+```   
 
 ## Optional Configuration
 You can customize the following settings in the schedule-skipper configuration file (config/schedule-skipper.php):
 
-- **env**: Environment to schedule skipper (default: local).
+- **env**: Environment to schedule skipper. Multiple environments must be specified separated by commas (default: local).
